@@ -15,4 +15,8 @@ export class StudentService {
   async getStudentByID(id: string): Promise<Student> {
     return this.repository.getStudentById(id);
   }
+
+  async getManyStydentsByID(ids: string[]): Promise<Student[]> {
+    return this.repository.getManyStudentsByID(ids);
+  }
 }

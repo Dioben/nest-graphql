@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { MongoRepository } from 'typeorm';
 import { Lesson } from './lesson.entity';
 import { v4 as uuid } from 'uuid';
 import { CreateLessonInput } from './dto/create-lesson.input';
@@ -9,7 +9,7 @@ import { AssignStudentsToLessonInput } from './dto/assign-students-to-lesson.inp
 Injectable();
 export class LessonRepository {
   constructor(
-    @InjectRepository(Lesson) private lessonRepository: Repository<Lesson>,
+    @InjectRepository(Lesson) private lessonRepository: MongoRepository<Lesson>,
   ) {}
   async createLesson(input: CreateLessonInput): Promise<Lesson> {
     const { name, startDate, endDate, students } = input;
